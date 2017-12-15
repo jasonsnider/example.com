@@ -6,6 +6,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-      <h1 id="header" class="header">Contact</h1>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="resume.html">Resume</a> |
+            <a href="contact.php">Contact</a>
+        </nav>
+        <h1 id="header" class="header">Contact</h1>
     </body>
 </html>
