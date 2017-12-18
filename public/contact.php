@@ -1,51 +1,44 @@
-<?php require '../core/processContactForm.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>Contact</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <nav>
-            <a href="/">Home</a> |
-            <a href="resume.html">Resume</a> |
-            <a href="contact.php">Contact</a>
-        </nav>
-        <h1 id="header" class="header">Contact Jason</h1>
-        <?php echo $message; ?>
-        <form method="post">
-            <div>
-              <label for="firstName">First Name</label><br>
-              <input type="text" name="first_name" id="firstName">
-              <div style="color: #ff0000;"><?php echo $valid->error('first_name'); ?></div>
-            </div>
+<?php
 
-            <div>
-              <label for="lastName" id="lastName">Last Name</label><br>
-              <input type="text" name="last_name">
-              <div style="color: #ff0000;"><?php echo $valid->error('last_name'); ?></div>
-            </div>
+  require '../core/processContactForm.php';
 
-            <div>
-              <label for="email" id="email">Email</label><br>
-              <input type="text" name="email">
-              <div style="color: #ff0000;"><?php echo $valid->error('email'); ?></div>
-            </div>
+$content = <<<EOT
+<form method="post" action="contact.php">
+  {$message}
+  <div>
+    <label for="firstName">First Name</label><br>
+    <input type="text" name="first_name" id="firstName" value="{$valid->userInput('first_name')}">
+    <div class="text-error">{$valid->error('first_name')}</div>
+  </div>
 
-            <div>
-              <label for="subject" id="subject">Subject</label><br>
-              <input type="text" name="subject">
-              <div style="color: #ff0000;"><?php echo $valid->error('subject'); ?></div>
-            </div>
+  <div>
+    <label for="lastName" id="lastName">Last Name</label><br>
+    <input type="text" name="last_name" value="{$valid->userInput('last_name')}">
+    <div class="text-error">{$valid->error('last_name')}</div>
+  </div>
 
-            <div>
-              <label for="message" id="message">Message</label><br>
-              <textarea name="message"></textarea>
-              <div style="color: #ff0000;"><?php echo $valid->error('message'); ?></div>
-            </div>
+  <div>
+    <label for="email" id="email">Email</label><br>
+    <input type="text" name="email" value="{$valid->userInput('email')}">
+    <div class="text-error">{$valid->error('email')}</div>
+  </div>
 
-            <input type="submit">
-        </form>
-    </body>
-</html>
+  <div>
+    <label for="subject" id="subject">Subject</label><br>
+    <input type="text" name="subject" value="{$valid->userInput('subject')}">
+    <div class="text-error">{$valid->error('subject')}</div>
+  </div>
+
+  <div>
+    <label for="message" id="message">Message</label><br>
+    <textarea name="message">{$valid->userInput('message')}</textarea>
+    <div class="text-error">{$valid->error('message')}</div>
+  </div>
+
+
+  <input type="submit">
+
+</form>
+EOT;
+
+require '../core/layout.php';

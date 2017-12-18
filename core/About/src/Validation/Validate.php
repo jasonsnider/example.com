@@ -58,4 +58,8 @@ class Validate {
 
         return false;
     }
+
+    public function userInput() {
+      return false;
+    }
 }
