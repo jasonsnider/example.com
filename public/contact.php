@@ -1,6 +1,11 @@
 <?php
 
-  require '../core/processContactForm.php';
+require '../core/processContactForm.php';
+
+$meta = [];
+$meta['title'] = 'Contact Jason';
+$meta['description'] = 'Contact Jason';
+$meta['keywords'] = 'Contact Jason';
 
 $content = <<<EOT
 <form method="post" action="contact.php">
