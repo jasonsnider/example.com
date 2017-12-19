@@ -47,7 +47,7 @@ if(!empty($input)){
 
 
     if(empty($valid->errors) && !empty($input)){
-        $message = "<div style=\"color: #00ff00;\">Your form has been submitted!</div>";
+        $message = "<div class=\"success\">Your form has been submitted!</div>";
 
         # Instantiate the client.
         $mgClient = new Mailgun($mailgunKey);
@@ -61,8 +61,8 @@ if(!empty($input)){
                         'text'    => $input['message']
                     ));
 
-        var_dump($result);
+        //var_dump($result);
     }else{
-        $message = "<div style=\"color: #ff0000;\">Please correct the errors</div>";
+        $message = "<div class=\"error\">Please correct the errors</div>";
     }
 }
